@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const links = [
@@ -18,13 +18,30 @@ const links = [
 export default function Nav() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 60);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  const onHero = pathname === "/" && !scrolled;
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-ivory/90 backdrop-blur-sm border-b border-charcoal/10">
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-500 ${
+        onHero
+          ? "bg-transparent border-b border-white/10"
+          : "bg-ivory/90 backdrop-blur-sm border-b border-charcoal/10"
+      }`}
+    >
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         <Link
           href="/"
-          className="text-sm uppercase tracking-widest font-medium"
+          className={`text-sm uppercase tracking-widest font-medium transition-colors duration-500 ${
+            onHero ? "text-white" : "text-charcoal"
+          }`}
           onClick={() => setOpen(false)}
         >
           C &amp; T
@@ -36,8 +53,12 @@ export default function Nav() {
             <Link
               key={href}
               href={href}
-              className={`text-xs uppercase tracking-widest transition-colors duration-200 ${
-                pathname === href
+              className={`text-xs uppercase tracking-widest transition-colors duration-300 ${
+                onHero
+                  ? pathname === href
+                    ? "text-white"
+                    : "text-white/60 hover:text-white"
+                  : pathname === href
                   ? "text-charcoal"
                   : "text-charcoal/50 hover:text-charcoal"
               }`}
@@ -54,13 +75,19 @@ export default function Nav() {
           aria-label="Toggle menu"
         >
           <span
-            className={`block w-5 h-px bg-charcoal transition-transform duration-300 ${open ? "translate-y-2 rotate-45" : ""}`}
+            className={`block w-5 h-px transition-all duration-300 ${
+              onHero ? "bg-white" : "bg-charcoal"
+            } ${open ? "translate-y-2 rotate-45" : ""}`}
           />
           <span
-            className={`block w-5 h-px bg-charcoal transition-opacity duration-300 ${open ? "opacity-0" : ""}`}
+            className={`block w-5 h-px transition-all duration-300 ${
+              onHero ? "bg-white" : "bg-charcoal"
+            } ${open ? "opacity-0" : ""}`}
           />
           <span
-            className={`block w-5 h-px bg-charcoal transition-transform duration-300 ${open ? "-translate-y-2 -rotate-45" : ""}`}
+            className={`block w-5 h-px transition-all duration-300 ${
+              onHero ? "bg-white" : "bg-charcoal"
+            } ${open ? "-translate-y-2 -rotate-45" : ""}`}
           />
         </button>
       </div>
