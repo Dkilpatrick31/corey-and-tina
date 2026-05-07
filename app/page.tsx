@@ -4,16 +4,6 @@ import Image from "next/image";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-// ─── Stamp geometry ───────────────────────────────────────────────────────────
-const SW = 96, SH = 128, PR = 4, PS = 10, PM = 5;
-const PERFS: [number, number][] = [];
-for (let x = PM; x <= SW - PM; x += PS) {
-  PERFS.push([x, PM], [x, SH - PM]);
-}
-for (let y = PM + PS; y < SH - PM; y += PS) {
-  PERFS.push([PM, y], [SW - PM, y]);
-}
-
 // ─── Data ─────────────────────────────────────────────────────────────────────
 const HOTELS = [
   {
@@ -174,64 +164,17 @@ export default function Home() {
         />
         <div className="absolute inset-0 bg-black/40" />
 
-        {/* Postage stamp – top right */}
-        <div className="absolute top-5 right-5 z-20 flex items-center gap-2 select-none">
-          <svg width="46" height={SH} viewBox={`0 0 46 ${SH}`} fill="none" aria-hidden="true">
-            {Array.from({ length: 7 }, (_, i) => {
-              const y = 9 + i * 17;
-              return (
-                <path
-                  key={i}
-                  d={`M 0 ${y} C 11 ${y - 7} 23 ${y + 7} 34 ${y} S 46 ${y - 7} 46 ${y}`}
-                  stroke="rgba(255,255,255,0.6)"
-                  strokeWidth="1.5"
-                />
-              );
-            })}
-          </svg>
-          <svg width={SW} height={SH} viewBox={`0 0 ${SW} ${SH}`}>
-            <defs>
-              <mask id="stamp-mask">
-                <rect width={SW} height={SH} fill="white" />
-                {PERFS.map(([cx, cy], i) => (
-                  <circle key={i} cx={cx} cy={cy} r={PR} fill="black" />
-                ))}
-              </mask>
-              <clipPath id="stamp-img-clip">
-                <rect x={10} y={10} width={SW - 20} height={SH - 26} />
-              </clipPath>
-            </defs>
-            <rect width={SW} height={SH} fill="#faf9f6" mask="url(#stamp-mask)" />
-            <image
-              href="/images/hotel-peter-and-paul-entrance-door.jpeg"
-              x={10} y={10}
-              width={SW - 20}
-              height={SH - 26}
-              preserveAspectRatio="xMidYMid slice"
-              clipPath="url(#stamp-img-clip)"
-            />
-            <text
-              x={SW / 2} y={SH - 6}
-              textAnchor="middle"
-              fontSize="6"
-              fill="#3c3c3c"
-              fontFamily="sans-serif"
-              letterSpacing="2"
-            >
-              NEW ORLEANS
-            </text>
-          </svg>
-        </div>
-
         {/* Hero copy */}
         <div className="relative z-10 px-6 max-w-3xl w-full">
           <motion.h1
-            className="font-script text-6xl md:text-8xl text-[#faf9f6] leading-none mb-6 whitespace-nowrap"
+            className="font-script text-6xl md:text-8xl text-[#faf9f6] leading-none mb-6 tracking-wide whitespace-nowrap"
             initial={{ opacity: 0, y: 28 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.1, ease: "easeOut" }}
           >
-            Christina &amp; Corey
+            Christina{" "}
+            <span className="text-5xl md:text-6xl opacity-80">&amp;</span>
+            {" "}Corey
           </motion.h1>
           <motion.p
             className="font-serif text-[0.65rem] md:text-xs text-[#faf9f6]/80 tracking-[0.4em] uppercase mb-8"
