@@ -38,7 +38,7 @@ export default function Nav() {
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         <Link
           href="#"
-          className={`font-script text-2xl transition-colors duration-500 ${
+          className={`font-script text-3xl transition-colors duration-500 ${
             onHero ? "text-white" : "text-charcoal"
           }`}
           onClick={() => setOpen(false)}

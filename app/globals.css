@@ -4,8 +4,11 @@ html {
   scroll-behavior: smooth;
 }
 
+.font-script {
+  font-family: var(--font-script);
+}
+
 @theme {
-  --font-script: var(--font-dancing-script);
   --font-serif: var(--font-cormorant-sc);
   --font-body: var(--font-cormorant-garamond);
 

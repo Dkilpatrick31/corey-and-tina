@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Dancing_Script, Cormorant_SC, Cormorant_Garamond } from "next/font/google";
+import { Great_Vibes, Cormorant_SC, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
 import Nav from "@/components/Nav";
 
-const dancingScript = Dancing_Script({
-  variable: "--font-dancing-script",
-  weight: ["400", "500", "600", "700"],
+const greatVibes = Great_Vibes({
+  variable: "--font-script",
+  weight: "400",
   subsets: ["latin"],
 });
 
@@ -35,7 +35,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${dancingScript.variable} ${cormorantSC.variable} ${cormorantGaramond.variable} antialiased bg-ivory text-charcoal`}
+        className={`${greatVibes.variable} ${cormorantSC.variable} ${cormorantGaramond.variable} antialiased bg-ivory text-charcoal`}
       >
         <Nav />
         <main>{children}</main>
