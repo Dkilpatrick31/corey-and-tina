@@ -300,8 +300,8 @@ export default function Home() {
       </section>
 
       {/* ══════════════════════════════════════════ OUR LOVE STORY ══ */}
-      <section id="our-story" className="bg-[#2C3E2D] py-24 px-6">
-        <div className="max-w-6xl mx-auto">
+      <section id="our-story" className="bg-[#2C3E2D] py-24 px-6 textured-bg">
+        <div className="max-w-6xl mx-auto relative z-10">
           <SectionHeading label="Our Story" title="Our Love Story" />
           <div className="grid md:grid-cols-2 gap-12 md:gap-20 items-center">
             <motion.div
@@ -341,8 +341,8 @@ export default function Home() {
       </section>
 
       {/* ══════════════════════════════════════════ WEDDING WEEKEND ══ */}
-      <section id="wedding-weekend" className="bg-[#2C3E2D] py-24 px-6 border-t border-[#faf9f6]/10">
-        <div className="max-w-6xl mx-auto">
+      <section id="wedding-weekend" className="bg-[#2C3E2D] py-24 px-6 textured-bg border-t border-[#faf9f6]/10">
+        <div className="max-w-6xl mx-auto relative z-10">
           <SectionHeading label="The Weekend" title="Wedding Weekend" />
           <div className="flex gap-6 md:gap-12 items-start">
             <div className="hidden lg:block pt-[82px] flex-shrink-0">
@@ -389,8 +389,8 @@ export default function Home() {
       </section>
 
       {/* ════════════════════════════════════════ THINGS TO DO ══ */}
-      <section id="things-to-do" className="bg-[#2C3E2D] py-24 px-6 border-t border-[#faf9f6]/10">
-        <div className="max-w-6xl mx-auto">
+      <section id="things-to-do" className="bg-[#2C3E2D] py-24 px-6 textured-bg border-t border-[#faf9f6]/10">
+        <div className="max-w-6xl mx-auto relative z-10">
           <SectionHeading label="New Orleans" title="Things to Do" className="mb-4" />
           <motion.p
             className="text-center font-body italic text-lg text-[#faf9f6]/60 mb-16"
@@ -427,8 +427,8 @@ export default function Home() {
       </section>
 
       {/* ═══════════════════════════════════════════ WHERE TO STAY ══ */}
-      <section id="travel" className="bg-[#2C3E2D] py-24 px-6 border-t border-[#faf9f6]/10">
-        <div className="max-w-6xl mx-auto">
+      <section id="travel" className="bg-[#2C3E2D] py-24 px-6 textured-bg border-t border-[#faf9f6]/10">
+        <div className="max-w-6xl mx-auto relative z-10">
           <SectionHeading label="Travel & Hotels" title="Where to Stay" className="mb-6" />
           <motion.p
             className="text-center font-body italic text-lg md:text-xl text-[#faf9f6]/70 max-w-2xl mx-auto mb-16 leading-relaxed"
@@ -484,8 +484,8 @@ export default function Home() {
       </section>
 
       {/* ══════════════════════════════════════════════════════ FAQ ══ */}
-      <section id="faq" className="bg-[#2C3E2D] py-24 px-6 border-t border-[#faf9f6]/10">
-        <div className="max-w-3xl mx-auto">
+      <section id="faq" className="bg-[#2C3E2D] py-24 px-6 textured-bg border-t border-[#faf9f6]/10">
+        <div className="max-w-3xl mx-auto relative z-10">
           <SectionHeading label="Got Questions" title="Frequently Asked" />
 
           <motion.div
@@ -532,8 +532,8 @@ export default function Home() {
       </section>
 
       {/* ═══════════════════════════════════════════════════ RSVP ══ */}
-      <section id="rsvp" className="bg-[#2C3E2D] py-24 px-6 border-t border-[#faf9f6]/10">
-        <div className="max-w-2xl mx-auto">
+      <section id="rsvp" className="bg-[#2C3E2D] py-24 px-6 textured-bg border-t border-[#faf9f6]/10">
+        <div className="max-w-2xl mx-auto relative z-10">
           <div className="text-center">
             <motion.p
               className="font-script text-5xl text-[#faf9f6]/80 mb-2"
