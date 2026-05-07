@@ -226,7 +226,7 @@ export default function Home() {
         {/* Hero copy */}
         <div className="relative z-10 px-6 max-w-3xl w-full">
           <motion.h1
-            className="font-script text-8xl md:text-[12rem] text-[#faf9f6] leading-none mb-6"
+            className="font-script text-6xl md:text-8xl text-[#faf9f6] leading-none mb-6 whitespace-nowrap"
             initial={{ opacity: 0, y: 28 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.1, ease: "easeOut" }}
@@ -472,19 +472,21 @@ export default function Home() {
       {/* ═══════════════════════════════════════════════════ RSVP ══ */}
       <section id="rsvp" className="bg-[#2C3E2D] py-24 px-6 border-t border-[#faf9f6]/10">
         <div className="max-w-2xl mx-auto">
+          <div className="text-center">
           <motion.p
-            className="text-center font-script text-5xl text-[#faf9f6]/80 mb-2"
+            className="font-script text-5xl text-[#faf9f6]/80 mb-2"
             initial="hidden" whileInView="show" viewport={vp} variants={inView}
           >
             Kindly Reply
           </motion.p>
           <motion.h2
-            className="text-center font-serif text-4xl md:text-5xl tracking-[0.25em] uppercase text-[#faf9f6] mb-14"
+            className="font-serif text-4xl md:text-5xl tracking-[0.25em] uppercase text-[#faf9f6] mb-14"
             initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={vp}
             transition={{ duration: 0.8, delay: 0.15 }}
           >
             RSVP
           </motion.h2>
+          </div>
 
           <motion.form
             action="https://formspree.io/f/mpqblyqa"
