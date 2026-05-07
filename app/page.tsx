@@ -487,7 +487,7 @@ export default function Home() {
           </motion.h2>
 
           <motion.form
-            action="https://formspree.io/f/REPLACE_WITH_ID"
+            action="https://formspree.io/f/mpqblyqa"
             method="POST"
             className="space-y-9"
             initial={{ opacity: 0, y: 24 }}
