@@ -345,7 +345,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto">
           <SectionHeading label="The Weekend" title="Wedding Weekend" />
           <div className="flex gap-6 md:gap-12 items-start">
-            <div className="hidden lg:block pt-8 flex-shrink-0">
+            <div className="hidden lg:block pt-[82px] flex-shrink-0">
               <FloralVine />
             </div>
             <div className="flex-1 space-y-20">
@@ -384,6 +384,44 @@ export default function Home() {
                 </div>
               </motion.div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ════════════════════════════════════════ THINGS TO DO ══ */}
+      <section id="things-to-do" className="bg-[#2C3E2D] py-24 px-6 border-t border-[#faf9f6]/10">
+        <div className="max-w-6xl mx-auto">
+          <SectionHeading label="New Orleans" title="Things to Do" className="mb-4" />
+          <motion.p
+            className="text-center font-body italic text-lg text-[#faf9f6]/60 mb-16"
+            initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={vp}
+            transition={{ duration: 0.7, delay: 0.2 }}
+          >
+            Our favorite spots — make a weekend of it.
+          </motion.p>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+            {THINGS.map((rec, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={vp}
+                transition={{ duration: 0.7, ease: "easeOut", delay: i * 0.07 }}
+              >
+                <p className="font-serif text-xs tracking-[0.35em] uppercase text-gold mb-5">
+                  {rec.category}
+                </p>
+                <ul className="space-y-4">
+                  {rec.items.map((item, j) => (
+                    <li key={j}>
+                      <p className="font-body text-base text-[#faf9f6]/90">{item.name}</p>
+                      <p className="font-body italic text-sm text-[#faf9f6]/55 mt-0.5 leading-snug">{item.description}</p>
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
@@ -439,44 +477,6 @@ export default function Home() {
                 >
                   Visit Website
                 </a>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ════════════════════════════════════════ THINGS TO DO ══ */}
-      <section id="things-to-do" className="bg-[#2C3E2D] py-24 px-6 border-t border-[#faf9f6]/10">
-        <div className="max-w-6xl mx-auto">
-          <SectionHeading label="New Orleans" title="Things to Do" className="mb-4" />
-          <motion.p
-            className="text-center font-body italic text-lg text-[#faf9f6]/60 mb-16"
-            initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={vp}
-            transition={{ duration: 0.7, delay: 0.2 }}
-          >
-            Our favorite spots — make a weekend of it.
-          </motion.p>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
-            {THINGS.map((rec, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={vp}
-                transition={{ duration: 0.7, ease: "easeOut", delay: i * 0.07 }}
-              >
-                <p className="font-serif text-xs tracking-[0.35em] uppercase text-gold mb-5">
-                  {rec.category}
-                </p>
-                <ul className="space-y-4">
-                  {rec.items.map((item, j) => (
-                    <li key={j}>
-                      <p className="font-body text-base text-[#faf9f6]/90">{item.name}</p>
-                      <p className="font-body italic text-sm text-[#faf9f6]/55 mt-0.5 leading-snug">{item.description}</p>
-                    </li>
-                  ))}
-                </ul>
               </motion.div>
             ))}
           </div>
