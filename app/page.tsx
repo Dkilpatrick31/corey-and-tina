@@ -46,6 +46,28 @@ const HOTELS = [
   },
 ];
 
+const THINGS = [
+  {
+    category: "Restaurants",
+    items: [
+      { name: "Restaurant Name", description: "Short description." },
+      { name: "Restaurant Name", description: "Short description." },
+    ],
+  },
+  {
+    category: "Bars & Coffee",
+    items: [
+      { name: "Bar / Café Name", description: "Short description." },
+    ],
+  },
+  {
+    category: "Sights & Activities",
+    items: [
+      { name: "Attraction Name", description: "Short description." },
+    ],
+  },
+];
+
 const FAQS = [
   {
     q: "When should I RSVP by?",
@@ -147,6 +169,40 @@ function FloralVine() {
   );
 }
 
+// ─── Shared section heading ───────────────────────────────────────────────────
+function SectionHeading({
+  label,
+  title,
+  className = "mb-16",
+}: {
+  label: string;
+  title: string;
+  className?: string;
+}) {
+  return (
+    <div className={`text-center ${className}`}>
+      <motion.p
+        className="font-serif text-xs tracking-[0.4em] uppercase text-gold mb-3"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={vp}
+        transition={{ duration: 0.7 }}
+      >
+        {label}
+      </motion.p>
+      <motion.h2
+        className="font-script text-5xl md:text-6xl text-[#faf9f6]"
+        initial="hidden"
+        whileInView="show"
+        viewport={vp}
+        variants={inView}
+      >
+        {title}
+      </motion.h2>
+    </div>
+  );
+}
+
 // ─── Page ─────────────────────────────────────────────────────────────────────
 export default function Home() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -202,12 +258,7 @@ export default function Home() {
       {/* ══════════════════════════════════════════ OUR LOVE STORY ══ */}
       <section id="our-story" className="bg-[#2C3E2D] py-24 px-6">
         <div className="max-w-6xl mx-auto">
-          <motion.h2
-            className="text-center font-serif text-4xl md:text-5xl tracking-[0.25em] uppercase text-[#faf9f6] mb-16"
-            initial="hidden" whileInView="show" viewport={vp} variants={inView}
-          >
-            Our Love Story
-          </motion.h2>
+          <SectionHeading label="Our Story" title="Our Love Story" />
           <div className="grid md:grid-cols-2 gap-12 md:gap-20 items-start">
             <motion.div
               className="order-2 md:order-1"
@@ -248,12 +299,7 @@ export default function Home() {
       {/* ══════════════════════════════════════════ WEDDING WEEKEND ══ */}
       <section id="wedding-weekend" className="bg-[#2C3E2D] py-24 px-6 border-t border-[#faf9f6]/10">
         <div className="max-w-6xl mx-auto">
-          <motion.h2
-            className="text-center font-serif text-4xl md:text-5xl tracking-[0.25em] uppercase text-[#faf9f6] mb-16"
-            initial="hidden" whileInView="show" viewport={vp} variants={inView}
-          >
-            Wedding Weekend
-          </motion.h2>
+          <SectionHeading label="The Weekend" title="Wedding Weekend" />
           <div className="flex gap-6 md:gap-12 items-start">
             <div className="hidden lg:block pt-8 flex-shrink-0">
               <FloralVine />
@@ -301,12 +347,7 @@ export default function Home() {
       {/* ═══════════════════════════════════════════ WHERE TO STAY ══ */}
       <section id="travel" className="bg-[#2C3E2D] py-24 px-6 border-t border-[#faf9f6]/10">
         <div className="max-w-6xl mx-auto">
-          <motion.h2
-            className="text-center font-serif text-4xl md:text-5xl tracking-[0.25em] uppercase text-[#faf9f6] mb-6"
-            initial="hidden" whileInView="show" viewport={vp} variants={inView}
-          >
-            Where to Stay
-          </motion.h2>
+          <SectionHeading label="Travel & Hotels" title="Where to Stay" className="mb-6" />
           <motion.p
             className="text-center font-body italic text-lg md:text-xl text-[#faf9f6]/70 max-w-2xl mx-auto mb-16 leading-relaxed"
             initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={vp}
@@ -352,22 +393,48 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ════════════════════════════════════════ THINGS TO DO ══ */}
+      <section id="things-to-do" className="bg-[#2C3E2D] py-24 px-6 border-t border-[#faf9f6]/10">
+        <div className="max-w-4xl mx-auto">
+          <SectionHeading label="New Orleans" title="Things to Do" className="mb-4" />
+          <motion.p
+            className="text-center font-body italic text-lg text-[#faf9f6]/60 mb-16"
+            initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={vp}
+            transition={{ duration: 0.7, delay: 0.2 }}
+          >
+            Our favorite spots — make a weekend of it.
+          </motion.p>
+
+          <div className="grid md:grid-cols-3 gap-10">
+            {THINGS.map((rec, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={vp}
+                transition={{ duration: 0.7, ease: "easeOut", delay: i * 0.1 }}
+              >
+                <p className="font-serif text-xs tracking-[0.35em] uppercase text-gold mb-5">
+                  {rec.category}
+                </p>
+                <ul className="space-y-5">
+                  {rec.items.map((item, j) => (
+                    <li key={j}>
+                      <p className="font-body text-lg text-[#faf9f6]/90">{item.name}</p>
+                      <p className="font-body italic text-base text-[#faf9f6]/55 mt-0.5">{item.description}</p>
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ══════════════════════════════════════════════════════ FAQ ══ */}
       <section id="faq" className="bg-[#2C3E2D] py-24 px-6 border-t border-[#faf9f6]/10">
         <div className="max-w-3xl mx-auto">
-          <motion.p
-            className="text-center font-serif text-xs tracking-[0.4em] uppercase text-gold mb-3"
-            initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={vp}
-            transition={{ duration: 0.7 }}
-          >
-            Got Questions
-          </motion.p>
-          <motion.h2
-            className="text-center font-serif text-4xl md:text-5xl tracking-[0.25em] uppercase text-[#faf9f6] mb-14"
-            initial="hidden" whileInView="show" viewport={vp} variants={inView}
-          >
-            FAQ
-          </motion.h2>
+          <SectionHeading label="Got Questions" title="Frequently Asked" />
 
           <motion.div
             className="divide-y divide-[#faf9f6]/15"
@@ -416,19 +483,19 @@ export default function Home() {
       <section id="rsvp" className="bg-[#2C3E2D] py-24 px-6 border-t border-[#faf9f6]/10">
         <div className="max-w-2xl mx-auto">
           <div className="text-center">
-          <motion.p
-            className="font-script text-5xl text-[#faf9f6]/80 mb-2"
-            initial="hidden" whileInView="show" viewport={vp} variants={inView}
-          >
-            Kindly Reply
-          </motion.p>
-          <motion.h2
-            className="font-serif text-4xl md:text-5xl tracking-[0.25em] uppercase text-[#faf9f6] mb-14"
-            initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={vp}
-            transition={{ duration: 0.8, delay: 0.15 }}
-          >
-            RSVP
-          </motion.h2>
+            <motion.p
+              className="font-script text-5xl text-[#faf9f6]/80 mb-2"
+              initial="hidden" whileInView="show" viewport={vp} variants={inView}
+            >
+              Kindly Reply
+            </motion.p>
+            <motion.h2
+              className="font-serif text-4xl md:text-5xl tracking-[0.25em] uppercase text-[#faf9f6] mb-14"
+              initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={vp}
+              transition={{ duration: 0.8, delay: 0.15 }}
+            >
+              RSVP
+            </motion.h2>
           </div>
 
           <motion.form
@@ -518,12 +585,7 @@ export default function Home() {
       {/* ══════════════════════════════════════════════ REGISTRY ══ */}
       <section id="registry" className="bg-charcoal py-24 px-6">
         <div className="max-w-2xl mx-auto text-center">
-          <motion.h2
-            className="font-serif text-4xl md:text-5xl tracking-[0.25em] uppercase text-[#faf9f6] mb-8"
-            initial="hidden" whileInView="show" viewport={vp} variants={inView}
-          >
-            Registry
-          </motion.h2>
+          <SectionHeading label="A Gift of Love" title="Registry" className="mb-8" />
           <motion.p
             className="font-body italic text-xl text-[#faf9f6]/70 leading-relaxed mb-12"
             initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={vp}
