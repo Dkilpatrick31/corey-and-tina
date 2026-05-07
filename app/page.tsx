@@ -9,6 +9,7 @@ const HOTELS = [
   {
     name: "Hotel Peter and Paul",
     url: "https://hotelpeterandpaul.com",
+    image: "/images/hotel-peter-and-paul-church-facade.jpeg",
     details: [
       "Ceremony & reception venue",
       "Located in the Marigny, just outside the French Quarter",
@@ -20,6 +21,7 @@ const HOTELS = [
   {
     name: "The Frenchmen Hotel",
     url: "https://thefrenchmenhotel.com",
+    image: "/images/french-quarter-ironwork-balconies-ferns.jpeg",
     details: [
       "~2 min walk to Hotel Peter and Paul",
       "Boutique, intimate hotel",
@@ -29,6 +31,7 @@ const HOTELS = [
   {
     name: "Hotel Provincial",
     url: "https://hotelprovincial.com",
+    image: "/images/french-quarter-colonial-hotel-flags.jpeg",
     details: [
       "Located in the French Quarter",
       "~5–10 min walk to Bourbon Street",
@@ -38,6 +41,7 @@ const HOTELS = [
   {
     name: "Hampton Inn New Orleans French Quarter",
     url: "https://www.hilton.com/en/hotels/msyhxhx-hampton-new-orleans-french-quarter-market-area/",
+    image: "/images/hampton-inn-new-orleans.jpeg",
     details: [
       "~5 min drive to venue",
       "Clean, comfortable, reliable",
@@ -48,22 +52,62 @@ const HOTELS = [
 
 const THINGS = [
   {
-    category: "Restaurants",
+    category: "Slow Mornings",
     items: [
-      { name: "Restaurant Name", description: "Short description." },
-      { name: "Restaurant Name", description: "Short description." },
+      { name: "Cafe du Monde", description: "A New Orleans classic, famous for beignets and café au lait. A must-visit." },
+      { name: "French Truck Coffee", description: "A favorite for a relaxed start to the day." },
+      { name: "Bearcat Cafe", description: "Bright, modern spot with healthy options and indulgent brunch favorites." },
+      { name: "Willa Jean", description: "Trendy bakery and brunch spot known for biscuits and pastries." },
+      { name: "Elizabeth's", description: "Cozy neighborhood favorite in the Bywater, laid-back and local." },
     ],
   },
   {
-    category: "Bars & Coffee",
+    category: "Dinner & Drinks",
     items: [
-      { name: "Bar / Café Name", description: "Short description." },
+      { name: "The Elysian Bar", description: "Our favorite spot, located right at Hotel Peter and Paul." },
+      { name: "Cane & Table", description: "Caribbean-inspired flavors and great cocktails." },
+      { name: "Brennan's", description: "A classic New Orleans dining experience, elegant and iconic." },
+      { name: "Vessel", description: "Stunning restaurant inside a restored church." },
+      { name: "Acme Oyster House", description: "New Orleans staple for chargrilled oysters." },
+      { name: "Paladar 511", description: "Handmade pasta, pizza, and a cool modern vibe." },
     ],
   },
   {
-    category: "Sights & Activities",
+    category: "Music & Evenings Out",
     items: [
-      { name: "Attraction Name", description: "Short description." },
+      { name: "Frenchmen Street", description: "Live music and a local feel." },
+      { name: "Bourbon Street", description: "Lively, iconic, and always unforgettable." },
+      { name: "Lafitte's Blacksmith Shop Bar", description: "One of the oldest bars in the country." },
+      { name: "Hot Tin", description: "Rooftop bar with amazing skyline views, perfect for sunset drinks." },
+      { name: "Bacchanal Wine", description: "Backyard wine bar with live music, very romantic." },
+      { name: "The Carousel Bar & Lounge", description: "A literal spinning bar inside Hotel Monteleone." },
+      { name: "Pat O'Brien's", description: "Famous for hurricanes and a lively courtyard." },
+    ],
+  },
+  {
+    category: "A Little New Orleans Magic",
+    items: [
+      { name: "Ghost Tours", description: "A fun and spooky way to explore the French Quarter at night." },
+      { name: "New Orleans Pharmacy Museum", description: "Quirky and fascinating, old-world medical history." },
+      { name: "Marie Laveau's House of Voodoo", description: "A well-known shop for all things mystical." },
+      { name: "Jackson Square", description: "Street performers, artists, and classic New Orleans energy." },
+      { name: "Garden District", description: "Beautiful historic homes and oak-lined streets." },
+    ],
+  },
+  {
+    category: "Explore & Experience",
+    items: [
+      { name: "French Quarter", description: "Walk, wander, and take it all in." },
+      { name: "Jackson Square", description: "Historic, beautiful, and full of life." },
+      { name: "Swamp & Gator Tour (one of our favorites!)", description: "Explore the Louisiana bayou by boat, see alligators up close." },
+    ],
+  },
+  {
+    category: "Museums & Culture",
+    items: [
+      { name: "The National WWII Museum", description: "One of the top museums in the country, interactive and immersive." },
+      { name: "Ogden Museum of Southern Art", description: "Great spot to explore Southern art." },
+      { name: "New Orleans Museum of Art", description: "Located in City Park, perfect with a scenic stroll." },
     ],
   },
 ];
@@ -259,7 +303,7 @@ export default function Home() {
       <section id="our-story" className="bg-[#2C3E2D] py-24 px-6">
         <div className="max-w-6xl mx-auto">
           <SectionHeading label="Our Story" title="Our Love Story" />
-          <div className="grid md:grid-cols-2 gap-12 md:gap-20 items-start">
+          <div className="grid md:grid-cols-2 gap-12 md:gap-20 items-center">
             <motion.div
               className="order-2 md:order-1"
               initial={{ opacity: 0, x: -32 }}
@@ -282,7 +326,7 @@ export default function Home() {
               transition={{ duration: 0.9, ease: "easeOut", delay: 0.15 }}
             >
               <div className="relative p-[10px] border border-[#faf9f6]/25">
-                <div className="relative aspect-[2/3] overflow-hidden">
+                <div className="relative aspect-[2/3] overflow-hidden rounded-[5px] shadow-[0_8px_30px_rgba(0,0,0,0.4)]">
                   <Image
                     src="/images/couple-joshua-tree-golden-hour.jpeg"
                     alt="Christina and Corey at Joshua Tree"
@@ -318,7 +362,7 @@ export default function Home() {
                   <p className="font-body italic text-lg text-[#faf9f6]/65 mb-4">with our immediate family and wedding party</p>
                   <p className="font-body text-xl text-[#faf9f6]/80">5:30 PM &nbsp;&middot;&nbsp; Muriel&apos;s Jackson Square</p>
                 </div>
-                <div className="relative aspect-[4/3] overflow-hidden">
+                <div className="relative aspect-[4/3] overflow-hidden rounded-[5px] shadow-[0_8px_30px_rgba(0,0,0,0.4)]">
                   <Image src="/images/muriels-jackson-square-bistro.jpeg" alt="Muriel's Jackson Square" fill className="object-cover" />
                 </div>
               </motion.div>
@@ -335,7 +379,7 @@ export default function Home() {
                   <p className="font-body italic text-lg text-[#faf9f6]/65 mb-4">Ceremony &amp; Reception &nbsp;&middot;&nbsp; Hotel Peter and Paul</p>
                   <p className="font-body text-xl text-[#faf9f6]/80">Guest arrival 5:00 PM &nbsp;&middot;&nbsp; Ceremony begins 5:30 PM</p>
                 </div>
-                <div className="relative aspect-[4/3] overflow-hidden">
+                <div className="relative aspect-[4/3] overflow-hidden rounded-[5px] shadow-[0_8px_30px_rgba(0,0,0,0.4)]">
                   <Image src="/images/hotel-peter-and-paul-church-facade.jpeg" alt="Hotel Peter and Paul" fill className="object-cover" />
                 </div>
               </motion.div>
@@ -368,6 +412,14 @@ export default function Home() {
                 viewport={vp}
                 transition={{ duration: 0.75, ease: "easeOut", delay: i * 0.08 }}
               >
+                <div className="relative h-48 overflow-hidden rounded-[5px] shadow-[0_8px_30px_rgba(0,0,0,0.4)]">
+                  <Image
+                    src={hotel.image}
+                    alt={hotel.name}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
                 <h3 className="font-body text-2xl text-[#faf9f6] leading-tight">
                   {hotel.name}
                 </h3>
@@ -395,7 +447,7 @@ export default function Home() {
 
       {/* ════════════════════════════════════════ THINGS TO DO ══ */}
       <section id="things-to-do" className="bg-[#2C3E2D] py-24 px-6 border-t border-[#faf9f6]/10">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <SectionHeading label="New Orleans" title="Things to Do" className="mb-4" />
           <motion.p
             className="text-center font-body italic text-lg text-[#faf9f6]/60 mb-16"
@@ -405,23 +457,23 @@ export default function Home() {
             Our favorite spots — make a weekend of it.
           </motion.p>
 
-          <div className="grid md:grid-cols-3 gap-10">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
             {THINGS.map((rec, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={vp}
-                transition={{ duration: 0.7, ease: "easeOut", delay: i * 0.1 }}
+                transition={{ duration: 0.7, ease: "easeOut", delay: i * 0.07 }}
               >
                 <p className="font-serif text-xs tracking-[0.35em] uppercase text-gold mb-5">
                   {rec.category}
                 </p>
-                <ul className="space-y-5">
+                <ul className="space-y-4">
                   {rec.items.map((item, j) => (
                     <li key={j}>
-                      <p className="font-body text-lg text-[#faf9f6]/90">{item.name}</p>
-                      <p className="font-body italic text-base text-[#faf9f6]/55 mt-0.5">{item.description}</p>
+                      <p className="font-body text-base text-[#faf9f6]/90">{item.name}</p>
+                      <p className="font-body italic text-sm text-[#faf9f6]/55 mt-0.5 leading-snug">{item.description}</p>
                     </li>
                   ))}
                 </ul>
