@@ -9,6 +9,7 @@ const links = [
   { href: "#our-story", label: "Our Story" },
   { href: "#wedding-weekend", label: "Wedding Weekend" },
   { href: "#travel", label: "Where to Stay" },
+  { href: "#things-to-do", label: "Things to Do" },
   { href: "#faq", label: "FAQ" },
   { href: "#rsvp", label: "RSVP" },
   { href: "#registry", label: "Registry" },
