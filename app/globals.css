@@ -5,10 +5,9 @@ html {
 }
 
 @theme {
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-  --font-script: var(--font-great-vibes);
-  --font-cormorant: var(--font-cormorant-garamond);
+  --font-script: var(--font-dancing-script);
+  --font-serif: var(--font-cormorant-sc);
+  --font-body: var(--font-cormorant-garamond);
 
   --color-ivory: #faf9f6;
   --color-blush: #e8b4b8;

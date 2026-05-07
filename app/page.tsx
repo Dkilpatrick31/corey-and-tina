@@ -104,7 +104,7 @@ const vp = { once: true, margin: "-70px" as const };
 
 const inputCls =
   "w-full bg-transparent border-b border-[#faf9f6]/30 py-2.5 text-[#faf9f6] " +
-  "placeholder-[#faf9f6]/35 font-cormorant text-lg outline-none " +
+  "placeholder-[#faf9f6]/35 font-body text-lg outline-none " +
   "focus:border-[#faf9f6]/60 transition-colors duration-200";
 
 function RadioBtn({
@@ -120,7 +120,7 @@ function RadioBtn({
     <label className="flex items-center gap-3 cursor-pointer">
       <input type="radio" name={name} value={value} className="peer sr-only" />
       <span className="w-4 h-4 rounded-full border border-[#faf9f6]/40 flex-shrink-0 transition-colors peer-checked:border-gold peer-checked:bg-gold/25" />
-      <span className="font-cormorant text-lg text-[#faf9f6]/70 transition-colors peer-checked:text-[#faf9f6]">
+      <span className="font-body text-lg text-[#faf9f6]/70 transition-colors peer-checked:text-[#faf9f6]">
         {label}
       </span>
     </label>
@@ -226,7 +226,7 @@ export default function Home() {
         {/* Hero copy */}
         <div className="relative z-10 px-6 max-w-3xl w-full">
           <motion.h1
-            className="font-script text-8xl md:text-[10rem] text-[#faf9f6] leading-none mb-6"
+            className="font-script text-8xl md:text-[12rem] text-[#faf9f6] leading-none mb-6"
             initial={{ opacity: 0, y: 28 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.1, ease: "easeOut" }}
@@ -234,7 +234,7 @@ export default function Home() {
             Christina &amp; Corey
           </motion.h1>
           <motion.p
-            className="font-cormorant text-[0.65rem] md:text-xs text-[#faf9f6]/80 tracking-[0.4em] uppercase mb-8"
+            className="font-serif text-[0.65rem] md:text-xs text-[#faf9f6]/80 tracking-[0.4em] uppercase mb-8"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, ease: "easeOut", delay: 0.25 }}
@@ -243,7 +243,7 @@ export default function Home() {
             Paul&nbsp;&nbsp;&middot;&nbsp;&nbsp;New Orleans, Louisiana
           </motion.p>
           <motion.p
-            className="font-cormorant italic text-lg md:text-xl text-[#faf9f6]/80 leading-relaxed max-w-2xl mx-auto"
+            className="font-body italic text-lg md:text-xl text-[#faf9f6]/80 leading-relaxed max-w-2xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, ease: "easeOut", delay: 0.45 }}
@@ -260,7 +260,7 @@ export default function Home() {
       <section id="our-story" className="bg-[#2C3E2D] py-24 px-6">
         <div className="max-w-6xl mx-auto">
           <motion.h2
-            className="text-center font-cormorant text-4xl md:text-5xl tracking-[0.25em] uppercase text-[#faf9f6] mb-16"
+            className="text-center font-serif text-4xl md:text-5xl tracking-[0.25em] uppercase text-[#faf9f6] mb-16"
             initial="hidden" whileInView="show" viewport={vp} variants={inView}
           >
             Our Love Story
@@ -273,7 +273,7 @@ export default function Home() {
               viewport={vp}
               transition={{ duration: 0.9, ease: "easeOut" }}
             >
-              <div className="font-cormorant italic text-xl md:text-2xl text-[#faf9f6]/80 leading-relaxed space-y-7">
+              <div className="font-body italic text-xl md:text-2xl text-[#faf9f6]/80 leading-relaxed space-y-7">
                 <p>We met at a music festival while traveling, and from the start, it felt like something we were meant to find.</p>
                 <p>After some time spent long distance and traveling back and forth, we eventually made our way to Dallas and built a life together there.</p>
                 <p>Over time, we&apos;ve created something that feels steady, fun, and truly our own.</p>
@@ -306,7 +306,7 @@ export default function Home() {
       <section id="wedding-weekend" className="bg-[#2C3E2D] py-24 px-6 border-t border-[#faf9f6]/10">
         <div className="max-w-6xl mx-auto">
           <motion.h2
-            className="text-center font-cormorant text-4xl md:text-5xl tracking-[0.25em] uppercase text-[#faf9f6] mb-16"
+            className="text-center font-serif text-4xl md:text-5xl tracking-[0.25em] uppercase text-[#faf9f6] mb-16"
             initial="hidden" whileInView="show" viewport={vp} variants={inView}
           >
             Wedding Weekend
@@ -325,9 +325,9 @@ export default function Home() {
               >
                 <div>
                   <h3 className="font-script text-5xl md:text-6xl text-[#faf9f6]/90 mb-3 leading-none">Rehearsal Dinner</h3>
-                  <p className="font-cormorant text-xs tracking-[0.35em] uppercase text-[#faf9f6]/45 mb-5">Friday, April 2, 2027</p>
-                  <p className="font-cormorant italic text-lg text-[#faf9f6]/65 mb-4">with our immediate family and wedding party</p>
-                  <p className="font-cormorant text-xl text-[#faf9f6]/80">5:30 PM &nbsp;&middot;&nbsp; Muriel&apos;s Jackson Square</p>
+                  <p className="font-serif text-xs tracking-[0.35em] uppercase text-[#faf9f6]/45 mb-5">Friday, April 2, 2027</p>
+                  <p className="font-body italic text-lg text-[#faf9f6]/65 mb-4">with our immediate family and wedding party</p>
+                  <p className="font-body text-xl text-[#faf9f6]/80">5:30 PM &nbsp;&middot;&nbsp; Muriel&apos;s Jackson Square</p>
                 </div>
                 <div className="relative aspect-[4/3] overflow-hidden">
                   <Image src="/images/muriels-jackson-square-bistro.jpeg" alt="Muriel's Jackson Square" fill className="object-cover" />
@@ -342,9 +342,9 @@ export default function Home() {
               >
                 <div>
                   <h3 className="font-script text-5xl md:text-6xl text-[#faf9f6]/90 mb-3 leading-none">Wedding Day</h3>
-                  <p className="font-cormorant text-xs tracking-[0.35em] uppercase text-[#faf9f6]/45 mb-5">Saturday, April 3, 2027</p>
-                  <p className="font-cormorant italic text-lg text-[#faf9f6]/65 mb-4">Ceremony &amp; Reception &nbsp;&middot;&nbsp; Hotel Peter and Paul</p>
-                  <p className="font-cormorant text-xl text-[#faf9f6]/80">Guest arrival 5:00 PM &nbsp;&middot;&nbsp; Ceremony begins 5:30 PM</p>
+                  <p className="font-serif text-xs tracking-[0.35em] uppercase text-[#faf9f6]/45 mb-5">Saturday, April 3, 2027</p>
+                  <p className="font-body italic text-lg text-[#faf9f6]/65 mb-4">Ceremony &amp; Reception &nbsp;&middot;&nbsp; Hotel Peter and Paul</p>
+                  <p className="font-body text-xl text-[#faf9f6]/80">Guest arrival 5:00 PM &nbsp;&middot;&nbsp; Ceremony begins 5:30 PM</p>
                 </div>
                 <div className="relative aspect-[4/3] overflow-hidden">
                   <Image src="/images/hotel-peter-and-paul-church-facade.jpeg" alt="Hotel Peter and Paul" fill className="object-cover" />
@@ -359,13 +359,13 @@ export default function Home() {
       <section id="travel" className="bg-[#2C3E2D] py-24 px-6 border-t border-[#faf9f6]/10">
         <div className="max-w-6xl mx-auto">
           <motion.h2
-            className="text-center font-cormorant text-4xl md:text-5xl tracking-[0.25em] uppercase text-[#faf9f6] mb-6"
+            className="text-center font-serif text-4xl md:text-5xl tracking-[0.25em] uppercase text-[#faf9f6] mb-6"
             initial="hidden" whileInView="show" viewport={vp} variants={inView}
           >
             Where to Stay
           </motion.h2>
           <motion.p
-            className="text-center font-cormorant italic text-lg md:text-xl text-[#faf9f6]/70 max-w-2xl mx-auto mb-16 leading-relaxed"
+            className="text-center font-body italic text-lg md:text-xl text-[#faf9f6]/70 max-w-2xl mx-auto mb-16 leading-relaxed"
             initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={vp}
             transition={{ duration: 0.8, delay: 0.15 }}
           >
@@ -384,12 +384,12 @@ export default function Home() {
                 viewport={vp}
                 transition={{ duration: 0.75, ease: "easeOut", delay: i * 0.08 }}
               >
-                <h3 className="font-cormorant text-2xl text-[#faf9f6] leading-tight">
+                <h3 className="font-body text-2xl text-[#faf9f6] leading-tight">
                   {hotel.name}
                 </h3>
                 <ul className="space-y-2 flex-1">
                   {hotel.details.map((d) => (
-                    <li key={d} className="flex items-start gap-2 font-cormorant text-base text-[#faf9f6]/65">
+                    <li key={d} className="flex items-start gap-2 font-body text-base text-[#faf9f6]/65">
                       <span className="text-gold mt-0.5 flex-shrink-0">·</span>
                       {d}
                     </li>
@@ -413,14 +413,14 @@ export default function Home() {
       <section id="faq" className="bg-[#2C3E2D] py-24 px-6 border-t border-[#faf9f6]/10">
         <div className="max-w-3xl mx-auto">
           <motion.p
-            className="text-center font-cormorant text-xs tracking-[0.4em] uppercase text-gold mb-3"
+            className="text-center font-serif text-xs tracking-[0.4em] uppercase text-gold mb-3"
             initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={vp}
             transition={{ duration: 0.7 }}
           >
             Got Questions
           </motion.p>
           <motion.h2
-            className="text-center font-cormorant text-4xl md:text-5xl tracking-[0.25em] uppercase text-[#faf9f6] mb-14"
+            className="text-center font-serif text-4xl md:text-5xl tracking-[0.25em] uppercase text-[#faf9f6] mb-14"
             initial="hidden" whileInView="show" viewport={vp} variants={inView}
           >
             FAQ
@@ -440,7 +440,7 @@ export default function Home() {
                   onClick={() => setOpenFaq(openFaq === i ? null : i)}
                   aria-expanded={openFaq === i}
                 >
-                  <span className="font-cormorant text-xl text-[#faf9f6]/85 group-hover:text-[#faf9f6] transition-colors">
+                  <span className="font-body text-xl text-[#faf9f6]/85 group-hover:text-[#faf9f6] transition-colors">
                     {faq.q}
                   </span>
                   <span className="text-gold text-2xl leading-none flex-shrink-0 w-5 text-center">
@@ -457,7 +457,7 @@ export default function Home() {
                       transition={{ duration: 0.3, ease: "easeInOut" }}
                       style={{ overflow: "hidden" }}
                     >
-                      <p className="font-cormorant italic text-lg text-[#faf9f6]/65 pb-5 pr-10 leading-relaxed">
+                      <p className="font-body italic text-lg text-[#faf9f6]/65 pb-5 pr-10 leading-relaxed">
                         {faq.a}
                       </p>
                     </motion.div>
@@ -479,7 +479,7 @@ export default function Home() {
             Kindly Reply
           </motion.p>
           <motion.h2
-            className="text-center font-cormorant text-4xl md:text-5xl tracking-[0.25em] uppercase text-[#faf9f6] mb-14"
+            className="text-center font-serif text-4xl md:text-5xl tracking-[0.25em] uppercase text-[#faf9f6] mb-14"
             initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={vp}
             transition={{ duration: 0.8, delay: 0.15 }}
           >
@@ -506,7 +506,7 @@ export default function Home() {
 
             {/* Attending */}
             <div className="space-y-3">
-              <p className="font-cormorant text-xs uppercase tracking-[0.35em] text-[#faf9f6]/45">
+              <p className="font-serif text-xs uppercase tracking-[0.35em] text-[#faf9f6]/45">
                 Will you attend?
               </p>
               <div className="flex flex-wrap gap-8">
@@ -525,7 +525,7 @@ export default function Home() {
                 placeholder="Number of Guests"
                 className={inputCls}
               />
-              <p className="font-cormorant italic text-sm text-[#faf9f6]/35">
+              <p className="font-body italic text-sm text-[#faf9f6]/35">
                 Please only include guests listed on your invitation
               </p>
             </div>
@@ -539,7 +539,7 @@ export default function Home() {
 
             {/* Meal */}
             <div className="space-y-3">
-              <p className="font-cormorant text-xs uppercase tracking-[0.35em] text-[#faf9f6]/45">
+              <p className="font-serif text-xs uppercase tracking-[0.35em] text-[#faf9f6]/45">
                 Meal Preference
               </p>
               <div className="flex gap-8">
@@ -562,7 +562,7 @@ export default function Home() {
             {/* Submit */}
             <button
               type="submit"
-              className="w-full bg-gold text-charcoal py-4 font-cormorant text-xl tracking-[0.2em] uppercase hover:opacity-90 transition-opacity duration-300"
+              className="w-full bg-gold text-charcoal py-4 font-serif text-xl tracking-[0.2em] uppercase hover:opacity-90 transition-opacity duration-300"
             >
               Send RSVP
             </button>
@@ -574,13 +574,13 @@ export default function Home() {
       <section id="registry" className="bg-charcoal py-24 px-6">
         <div className="max-w-2xl mx-auto text-center">
           <motion.h2
-            className="font-cormorant text-4xl md:text-5xl tracking-[0.25em] uppercase text-[#faf9f6] mb-8"
+            className="font-serif text-4xl md:text-5xl tracking-[0.25em] uppercase text-[#faf9f6] mb-8"
             initial="hidden" whileInView="show" viewport={vp} variants={inView}
           >
             Registry
           </motion.h2>
           <motion.p
-            className="font-cormorant italic text-xl text-[#faf9f6]/70 leading-relaxed mb-12"
+            className="font-body italic text-xl text-[#faf9f6]/70 leading-relaxed mb-12"
             initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={vp}
             transition={{ duration: 0.8, delay: 0.15 }}
           >
@@ -606,7 +606,7 @@ export default function Home() {
         <p className="font-script text-5xl text-[#faf9f6]/80 mb-3">
           Christina &amp; Corey
         </p>
-        <p className="font-cormorant text-xs tracking-[0.35em] uppercase text-[#faf9f6]/40">
+        <p className="font-serif text-xs tracking-[0.35em] uppercase text-[#faf9f6]/40">
           April 3, 2027 &nbsp;&middot;&nbsp; New Orleans, Louisiana
         </p>
       </footer>

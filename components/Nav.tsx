@@ -52,7 +52,7 @@ export default function Nav() {
             <a
               key={href}
               href={href}
-              className={`text-[10px] uppercase tracking-widest transition-colors duration-300 ${
+              className={`font-serif text-[10px] uppercase tracking-widest transition-colors duration-300 ${
                 onHero
                   ? "text-white/70 hover:text-white"
                   : "text-charcoal/50 hover:text-charcoal"
@@ -103,7 +103,7 @@ export default function Nav() {
                 <a
                   key={href}
                   href={href}
-                  className="text-xs uppercase tracking-widest text-charcoal/60 hover:text-charcoal transition-colors"
+                  className="font-serif text-xs uppercase tracking-widest text-charcoal/60 hover:text-charcoal transition-colors"
                   onClick={() => setOpen(false)}
                 >
                   {label}

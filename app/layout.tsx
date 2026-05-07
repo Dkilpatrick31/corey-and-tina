@@ -1,21 +1,17 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Great_Vibes, Cormorant_Garamond } from "next/font/google";
+import { Dancing_Script, Cormorant_SC, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
 import Nav from "@/components/Nav";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const dancingScript = Dancing_Script({
+  variable: "--font-dancing-script",
+  weight: ["400", "500", "600", "700"],
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-const greatVibes = Great_Vibes({
-  variable: "--font-great-vibes",
-  weight: "400",
+const cormorantSC = Cormorant_SC({
+  variable: "--font-cormorant-sc",
+  weight: ["300", "400", "500", "600", "700"],
   subsets: ["latin"],
 });
 
@@ -39,7 +35,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${greatVibes.variable} ${cormorantGaramond.variable} antialiased bg-ivory text-charcoal`}
+        className={`${dancingScript.variable} ${cormorantSC.variable} ${cormorantGaramond.variable} antialiased bg-ivory text-charcoal`}
       >
         <Nav />
         <main>{children}</main>
