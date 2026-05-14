@@ -4,49 +4,57 @@ import Image from "next/image";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
+// ─── Types ────────────────────────────────────────────────────────────────────
+type Hotel = {
+  name: string;
+  url: string;
+  image: string;
+  amenities: {
+    distance: string;
+    restaurant: string | null;
+    pool: boolean;
+    breakfast: string | null;
+  };
+  notes: string;
+};
+
 // ─── Data ─────────────────────────────────────────────────────────────────────
-const HOTELS = [
+const HOTELS: Hotel[] = [
   {
     name: "Hotel Peter and Paul",
     url: "https://hotelpeterandpaul.com",
     image: "/images/hotel-peter-and-paul-church-facade.jpeg",
-    details: [
-      "Ceremony & reception venue",
-      "Located in the Marigny, just outside the French Quarter",
-      "~15–20 min walk to French Quarter",
-      "Beautifully restored historic church turned boutique hotel",
-      "Room block coming soon",
-    ],
-  },
-  {
-    name: "The Frenchmen Hotel",
-    url: "https://thefrenchmenhotel.com",
-    image: "/images/french-quarter-ironwork-balconies-ferns.jpeg",
-    details: [
-      "~2 min walk to Hotel Peter and Paul",
-      "Boutique, intimate hotel",
-      "Steps from Frenchmen Street",
-    ],
+    amenities: {
+      distance: "On-site — this is our venue!",
+      restaurant: "Yes — The Elysian Bar",
+      pool: false,
+      breakfast: null,
+    },
+    notes: "Room block coming soon. A beautifully restored historic church and schoolhouse turned boutique hotel, located in the Marigny.",
   },
   {
     name: "Hotel Provincial",
     url: "https://hotelprovincial.com",
     image: "/images/french-quarter-colonial-hotel-flags.jpeg",
-    details: [
-      "Located in the French Quarter",
-      "~5–10 min walk to Bourbon Street",
-      "Classic French Quarter hotel with charming courtyards",
-    ],
+    amenities: {
+      distance: "~0.5 miles / 10 min walk to venue",
+      restaurant: "Yes — Broussard's Restaurant & Courtyard",
+      pool: true,
+      breakfast: null,
+    },
+    notes: "Classic French Quarter hotel with charming courtyards. Steps from Bourbon Street.",
   },
   {
-    name: "Hampton Inn New Orleans French Quarter",
+    name: "Hampton Inn French Quarter Market Area",
     url: "https://www.hilton.com/en/hotels/msyhxhx-hampton-new-orleans-french-quarter-market-area/",
     image: "/images/hampton-inn-new-orleans.jpeg",
-    details: [
-      "~5 min drive to venue",
-      "Clean, comfortable, reliable",
-      "Includes breakfast",
-    ],
+    amenities: {
+      distance: "~1.2 miles / 5 min drive to venue",
+      restaurant: null,
+      pool: false,
+      breakfast: "Yes — complimentary",
+    },
+    notes: "Clean, comfortable, and reliable. Great value option with complimentary breakfast included.",
   },
 ];
 
@@ -64,7 +72,7 @@ const THINGS = [
   {
     category: "Dinner & Drinks",
     items: [
-      { name: "The Elysian Bar", description: "Our favorite spot, located right at Hotel Peter and Paul." },
+      { name: "The Elysian Bar", description: "Our favorite spot—located right between Hotel Peter and Paul and the church, making it the closest and easiest option. Open 7am–2pm and 3pm–10pm, with a cozy coffee bar tucked inside—perfect for a quick drink before heading out." },
       { name: "Cane & Table", description: "Caribbean-inspired flavors and great cocktails." },
       { name: "Brennan's", description: "A classic New Orleans dining experience, elegant and iconic." },
       { name: "Vessel", description: "Stunning restaurant inside a restored church." },
@@ -119,7 +127,7 @@ const FAQS = [
   },
   {
     q: "What is the dress code?",
-    a: "Formal attire. We recommend light fabrics for the New Orleans weather and comfortable shoes for walking around the city.",
+    a: "Semi-formal / cocktail attire. Think elegant but relaxed — lightweight fabrics are recommended for the New Orleans April weather. For outfit inspiration and style details, check out our What to Wear section above.",
   },
   {
     q: "Where should I stay?",
@@ -226,7 +234,7 @@ function SectionHeading({
   return (
     <div className={`text-center ${className}`}>
       <motion.p
-        className="font-serif text-xs tracking-[0.4em] uppercase text-gold mb-3"
+        className="font-heading text-xs tracking-[0.4em] uppercase text-gold mb-3"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={vp}
@@ -277,7 +285,7 @@ export default function Home() {
             {" "}Corey
           </motion.h1>
           <motion.p
-            className="font-serif text-[0.65rem] md:text-xs text-[#faf9f6]/80 tracking-[0.4em] uppercase mb-8"
+            className="font-heading text-[0.65rem] md:text-xs text-[#faf9f6]/80 tracking-[0.4em] uppercase mb-8"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, ease: "easeOut", delay: 0.25 }}
@@ -286,7 +294,7 @@ export default function Home() {
             Paul&nbsp;&nbsp;&middot;&nbsp;&nbsp;New Orleans, Louisiana
           </motion.p>
           <motion.p
-            className="font-body italic text-lg md:text-xl text-[#faf9f6]/80 leading-relaxed max-w-2xl mx-auto"
+            className="font-body text-lg md:text-xl text-[#faf9f6]/80 leading-relaxed max-w-2xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, ease: "easeOut", delay: 0.45 }}
@@ -300,8 +308,8 @@ export default function Home() {
       </section>
 
       {/* ══════════════════════════════════════════ OUR LOVE STORY ══ */}
-      <section id="our-story" className="bg-[#2C3E2D] py-24 px-6">
-        <div className="max-w-6xl mx-auto">
+      <section id="our-story" className="bg-[#2C3E2D] py-24 px-6 textured-bg">
+        <div className="max-w-6xl mx-auto relative z-10">
           <SectionHeading label="Our Story" title="Our Love Story" />
           <div className="grid md:grid-cols-2 gap-12 md:gap-20 items-center">
             <motion.div
@@ -311,7 +319,7 @@ export default function Home() {
               viewport={vp}
               transition={{ duration: 0.9, ease: "easeOut" }}
             >
-              <div className="font-body italic text-xl md:text-2xl text-[#faf9f6]/80 leading-relaxed space-y-7">
+              <div className="font-body text-xl md:text-2xl text-[#faf9f6]/80 leading-relaxed space-y-7">
                 <p>We met at a music festival while traveling, and from the start, it felt like something we were meant to find.</p>
                 <p>After some time spent long distance and traveling back and forth, we eventually made our way to Dallas and built a life together there.</p>
                 <p>Over time, we&apos;ve created something that feels steady, fun, and truly our own.</p>
@@ -341,11 +349,11 @@ export default function Home() {
       </section>
 
       {/* ══════════════════════════════════════════ WEDDING WEEKEND ══ */}
-      <section id="wedding-weekend" className="bg-[#2C3E2D] py-24 px-6 border-t border-[#faf9f6]/10">
-        <div className="max-w-6xl mx-auto">
+      <section id="wedding-weekend" className="bg-[#2C3E2D] py-24 px-6 textured-bg border-t border-[#faf9f6]/10">
+        <div className="max-w-6xl mx-auto relative z-10">
           <SectionHeading label="The Weekend" title="Wedding Weekend" />
           <div className="flex gap-6 md:gap-12 items-start">
-            <div className="hidden lg:block pt-8 flex-shrink-0">
+            <div className="hidden lg:block pt-[82px] flex-shrink-0">
               <FloralVine />
             </div>
             <div className="flex-1 space-y-20">
@@ -358,8 +366,8 @@ export default function Home() {
               >
                 <div>
                   <h3 className="font-script text-5xl md:text-6xl text-[#faf9f6]/90 mb-3 leading-none">Rehearsal Dinner</h3>
-                  <p className="font-serif text-xs tracking-[0.35em] uppercase text-[#faf9f6]/45 mb-5">Friday, April 2, 2027</p>
-                  <p className="font-body italic text-lg text-[#faf9f6]/65 mb-4">with our immediate family and wedding party</p>
+                  <p className="font-heading text-xs tracking-[0.35em] uppercase text-[#faf9f6]/45 mb-5">Friday, April 2, 2027</p>
+                  <p className="font-body text-lg text-[#faf9f6]/65 mb-4">with our immediate family and wedding party</p>
                   <p className="font-body text-xl text-[#faf9f6]/80">5:30 PM &nbsp;&middot;&nbsp; Muriel&apos;s Jackson Square</p>
                 </div>
                 <div className="relative aspect-[4/3] overflow-hidden rounded-[5px] shadow-[0_8px_30px_rgba(0,0,0,0.4)]">
@@ -375,8 +383,8 @@ export default function Home() {
               >
                 <div>
                   <h3 className="font-script text-5xl md:text-6xl text-[#faf9f6]/90 mb-3 leading-none">Wedding Day</h3>
-                  <p className="font-serif text-xs tracking-[0.35em] uppercase text-[#faf9f6]/45 mb-5">Saturday, April 3, 2027</p>
-                  <p className="font-body italic text-lg text-[#faf9f6]/65 mb-4">Ceremony &amp; Reception &nbsp;&middot;&nbsp; Hotel Peter and Paul</p>
+                  <p className="font-heading text-xs tracking-[0.35em] uppercase text-[#faf9f6]/45 mb-5">Saturday, April 3, 2027</p>
+                  <p className="font-body text-lg text-[#faf9f6]/65 mb-4">Ceremony &amp; Reception &nbsp;&middot;&nbsp; Hotel Peter and Paul</p>
                   <p className="font-body text-xl text-[#faf9f6]/80">Guest arrival 5:00 PM &nbsp;&middot;&nbsp; Ceremony begins 5:30 PM</p>
                 </div>
                 <div className="relative aspect-[4/3] overflow-hidden rounded-[5px] shadow-[0_8px_30px_rgba(0,0,0,0.4)]">
@@ -388,12 +396,45 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ════════════════════════════════════════ WHAT TO WEAR ══ */}
+      <section id="what-to-wear" className="bg-[#2C3E2D] py-24 px-6 textured-bg border-t border-[#faf9f6]/10">
+        <div className="max-w-5xl mx-auto relative z-10">
+          <SectionHeading label="What to Wear" title="Dress the Part" />
+          <div className="grid md:grid-cols-2 gap-12 md:gap-20 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -32 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={vp}
+              transition={{ duration: 0.9, ease: "easeOut" }}
+            >
+              <p className="font-heading text-xs tracking-[0.35em] uppercase text-gold mb-6">
+                Semi-formal / Cocktail Attire
+              </p>
+              <p className="font-body text-lg text-[#faf9f6]/80 leading-relaxed">
+                We want you to feel beautiful, comfortable, and ready to celebrate. Think elegant but relaxed — the kind of outfit that lets you dance, explore the city, and raise a glass with ease. New Orleans in April is warm, so lightweight fabrics are your best friend.
+              </p>
+            </motion.div>
+            <motion.div
+              className="border border-[#C9A84C]/40 rounded min-h-64 flex items-center justify-center"
+              initial={{ opacity: 0, x: 32 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={vp}
+              transition={{ duration: 0.9, ease: "easeOut", delay: 0.15 }}
+            >
+              <p className="font-heading italic text-[#faf9f6]/40 text-center px-8 text-sm tracking-wide">
+                Style Guide Image — Coming Soon
+              </p>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       {/* ═══════════════════════════════════════════ WHERE TO STAY ══ */}
-      <section id="travel" className="bg-[#2C3E2D] py-24 px-6 border-t border-[#faf9f6]/10">
-        <div className="max-w-6xl mx-auto">
+      <section id="travel" className="bg-[#2C3E2D] py-24 px-6 textured-bg border-t border-[#faf9f6]/10">
+        <div className="max-w-6xl mx-auto relative z-10">
           <SectionHeading label="Travel & Hotels" title="Where to Stay" className="mb-6" />
           <motion.p
-            className="text-center font-body italic text-lg md:text-xl text-[#faf9f6]/70 max-w-2xl mx-auto mb-16 leading-relaxed"
+            className="text-center font-body text-lg md:text-xl text-[#faf9f6]/70 max-w-2xl mx-auto mb-16 leading-relaxed"
             initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={vp}
             transition={{ duration: 0.8, delay: 0.15 }}
           >
@@ -402,7 +443,7 @@ export default function Home() {
             about a 20–25 minute drive into the city.
           </motion.p>
 
-          <div className="grid sm:grid-cols-2 gap-6">
+          <div className="grid md:grid-cols-3 gap-6">
             {HOTELS.map((hotel, i) => (
               <motion.div
                 key={hotel.name}
@@ -420,16 +461,29 @@ export default function Home() {
                     className="object-cover"
                   />
                 </div>
-                <h3 className="font-body text-2xl text-[#faf9f6] leading-tight">
+                <h3 className="font-heading text-2xl text-[#faf9f6] leading-tight">
                   {hotel.name}
                 </h3>
-                <ul className="space-y-2 flex-1">
-                  {hotel.details.map((d) => (
-                    <li key={d} className="flex items-start gap-2 font-body text-base text-[#faf9f6]/65">
-                      <span className="text-gold mt-0.5 flex-shrink-0">·</span>
-                      {d}
+                <ul className="space-y-2.5 flex-1">
+                  {[
+                    { label: "Distance", value: hotel.amenities.distance },
+                    { label: "Restaurant / Bar", value: hotel.amenities.restaurant ?? "No" },
+                    { label: "Pool", value: hotel.amenities.pool ? "Yes" : "No" },
+                    { label: "Breakfast", value: hotel.amenities.breakfast ?? "No" },
+                  ].map(({ label, value }) => (
+                    <li key={label} className="flex items-start gap-2">
+                      <span className="text-gold flex-shrink-0 mt-0.5">·</span>
+                      <span className="font-body text-sm text-[#faf9f6]/65">
+                        <span className="text-[#faf9f6]/40 text-[10px] uppercase tracking-widest">{label}</span>
+                        {" — "}
+                        {value}
+                      </span>
                     </li>
                   ))}
+                  <li className="flex items-start gap-2 pt-1">
+                    <span className="text-gold flex-shrink-0 mt-0.5">·</span>
+                    <p className="font-body italic text-sm text-[#faf9f6]/50">{hotel.notes}</p>
+                  </li>
                 </ul>
                 <a
                   href={hotel.url}
@@ -446,11 +500,11 @@ export default function Home() {
       </section>
 
       {/* ════════════════════════════════════════ THINGS TO DO ══ */}
-      <section id="things-to-do" className="bg-[#2C3E2D] py-24 px-6 border-t border-[#faf9f6]/10">
-        <div className="max-w-6xl mx-auto">
+      <section id="things-to-do" className="bg-[#2C3E2D] py-24 px-6 textured-bg border-t border-[#faf9f6]/10">
+        <div className="max-w-6xl mx-auto relative z-10">
           <SectionHeading label="New Orleans" title="Things to Do" className="mb-4" />
           <motion.p
-            className="text-center font-body italic text-lg text-[#faf9f6]/60 mb-16"
+            className="text-center font-body text-lg text-[#faf9f6]/60 mb-16"
             initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={vp}
             transition={{ duration: 0.7, delay: 0.2 }}
           >
@@ -466,7 +520,7 @@ export default function Home() {
                 viewport={vp}
                 transition={{ duration: 0.7, ease: "easeOut", delay: i * 0.07 }}
               >
-                <p className="font-serif text-xs tracking-[0.35em] uppercase text-gold mb-5">
+                <p className="font-heading text-xs tracking-[0.35em] uppercase text-gold mb-5">
                   {rec.category}
                 </p>
                 <ul className="space-y-4">
@@ -484,8 +538,8 @@ export default function Home() {
       </section>
 
       {/* ══════════════════════════════════════════════════════ FAQ ══ */}
-      <section id="faq" className="bg-[#2C3E2D] py-24 px-6 border-t border-[#faf9f6]/10">
-        <div className="max-w-3xl mx-auto">
+      <section id="faq" className="bg-[#2C3E2D] py-24 px-6 textured-bg border-t border-[#faf9f6]/10">
+        <div className="max-w-3xl mx-auto relative z-10">
           <SectionHeading label="Got Questions" title="Frequently Asked" />
 
           <motion.div
@@ -502,7 +556,7 @@ export default function Home() {
                   onClick={() => setOpenFaq(openFaq === i ? null : i)}
                   aria-expanded={openFaq === i}
                 >
-                  <span className="font-body text-xl text-[#faf9f6]/85 group-hover:text-[#faf9f6] transition-colors">
+                  <span className="font-body text-base text-[#faf9f6]/85 group-hover:text-[#faf9f6] transition-colors">
                     {faq.q}
                   </span>
                   <span className="text-gold text-2xl leading-none flex-shrink-0 w-5 text-center">
@@ -519,7 +573,7 @@ export default function Home() {
                       transition={{ duration: 0.3, ease: "easeInOut" }}
                       style={{ overflow: "hidden" }}
                     >
-                      <p className="font-body italic text-lg text-[#faf9f6]/65 pb-5 pr-10 leading-relaxed">
+                      <p className="font-body text-base text-[#faf9f6]/65 pb-5 pr-10 leading-relaxed">
                         {faq.a}
                       </p>
                     </motion.div>
@@ -532,8 +586,8 @@ export default function Home() {
       </section>
 
       {/* ═══════════════════════════════════════════════════ RSVP ══ */}
-      <section id="rsvp" className="bg-[#2C3E2D] py-24 px-6 border-t border-[#faf9f6]/10">
-        <div className="max-w-2xl mx-auto">
+      <section id="rsvp" className="bg-[#2C3E2D] py-24 px-6 textured-bg border-t border-[#faf9f6]/10">
+        <div className="max-w-2xl mx-auto relative z-10">
           <div className="text-center">
             <motion.p
               className="font-script text-5xl text-[#faf9f6]/80 mb-2"
@@ -542,7 +596,7 @@ export default function Home() {
               Kindly Reply
             </motion.p>
             <motion.h2
-              className="font-serif text-4xl md:text-5xl tracking-[0.25em] uppercase text-[#faf9f6] mb-14"
+              className="font-heading text-4xl md:text-5xl tracking-[0.25em] uppercase text-[#faf9f6] mb-14"
               initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={vp}
               transition={{ duration: 0.8, delay: 0.15 }}
             >
@@ -570,7 +624,7 @@ export default function Home() {
 
             {/* Attending */}
             <div className="space-y-3">
-              <p className="font-serif text-xs uppercase tracking-[0.35em] text-[#faf9f6]/45">
+              <p className="font-heading text-xs uppercase tracking-[0.35em] text-[#faf9f6]/45">
                 Will you attend?
               </p>
               <div className="flex flex-wrap gap-8">
@@ -603,7 +657,7 @@ export default function Home() {
 
             {/* Meal */}
             <div className="space-y-3">
-              <p className="font-serif text-xs uppercase tracking-[0.35em] text-[#faf9f6]/45">
+              <p className="font-heading text-xs uppercase tracking-[0.35em] text-[#faf9f6]/45">
                 Meal Preference
               </p>
               <div className="flex gap-8">
@@ -626,7 +680,7 @@ export default function Home() {
             {/* Submit */}
             <button
               type="submit"
-              className="w-full bg-gold text-charcoal py-4 font-serif text-xl tracking-[0.2em] uppercase hover:opacity-90 transition-opacity duration-300"
+              className="w-full bg-gold text-charcoal py-4 font-heading text-xl tracking-[0.2em] uppercase hover:opacity-90 transition-opacity duration-300"
             >
               Send RSVP
             </button>
@@ -639,7 +693,7 @@ export default function Home() {
         <div className="max-w-2xl mx-auto text-center">
           <SectionHeading label="A Gift of Love" title="Registry" className="mb-8" />
           <motion.p
-            className="font-body italic text-xl text-[#faf9f6]/70 leading-relaxed mb-12"
+            className="font-body text-xl text-[#faf9f6]/70 leading-relaxed mb-12"
             initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={vp}
             transition={{ duration: 0.8, delay: 0.15 }}
           >
@@ -665,7 +719,7 @@ export default function Home() {
         <p className="font-script text-5xl text-[#faf9f6]/80 mb-3">
           Christina &amp; Corey
         </p>
-        <p className="font-serif text-xs tracking-[0.35em] uppercase text-[#faf9f6]/40">
+        <p className="font-heading text-xs tracking-[0.35em] uppercase text-[#faf9f6]/40">
           April 3, 2027 &nbsp;&middot;&nbsp; New Orleans, Louisiana
         </p>
       </footer>

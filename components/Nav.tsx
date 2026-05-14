@@ -8,6 +8,7 @@ import { motion, AnimatePresence } from "framer-motion";
 const links = [
   { href: "#our-story", label: "Our Story" },
   { href: "#wedding-weekend", label: "Wedding Weekend" },
+  { href: "#what-to-wear", label: "What to Wear" },
   { href: "#travel", label: "Where to Stay" },
   { href: "#things-to-do", label: "Things to Do" },
   { href: "#faq", label: "FAQ" },
@@ -53,7 +54,7 @@ export default function Nav() {
             <a
               key={href}
               href={href}
-              className={`font-serif text-[10px] uppercase tracking-widest transition-colors duration-300 ${
+              className={`font-body text-[10px] uppercase tracking-widest transition-colors duration-300 ${
                 onHero
                   ? "text-white/70 hover:text-white"
                   : "text-charcoal/50 hover:text-charcoal"
@@ -104,7 +105,7 @@ export default function Nav() {
                 <a
                   key={href}
                   href={href}
-                  className="font-serif text-xs uppercase tracking-widest text-charcoal/60 hover:text-charcoal transition-colors"
+                  className="font-body text-xs uppercase tracking-widest text-charcoal/60 hover:text-charcoal transition-colors"
                   onClick={() => setOpen(false)}
                 >
                   {label}
