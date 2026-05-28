@@ -4,24 +4,14 @@ html {
   scroll-behavior: smooth;
 }
 
-@layer base {
-  body {
-    font-weight: 300;
-    letter-spacing: 0.03em;
-  }
-
-  p, li, label, input, textarea, select, span, div {
-    font-weight: inherit;
-  }
-}
-
-@utility font-body {
+body {
+  font-family: var(--font-body);
   font-weight: 300;
   letter-spacing: 0.03em;
 }
 
-@utility font-heading {
-  letter-spacing: inherit;
+p {
+  font-weight: 300;
 }
 
 .font-script {
@@ -47,8 +37,7 @@ html {
 }
 
 @theme {
-  --font-heading: var(--font-cormorant-garamond);
-  --font-body: var(--font-cormorant-garamond);
+  --font-heading: var(--font-body);
 
   --color-ivory: #faf9f6;
   --color-blush: #e8b4b8;
