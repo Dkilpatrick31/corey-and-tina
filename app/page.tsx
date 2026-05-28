@@ -308,7 +308,7 @@ export default function Home() {
             {" "}Corey
           </motion.h1>
           <motion.p
-            className="font-heading text-[0.65rem] md:text-xs text-[#faf9f6]/80 tracking-[0.4em] uppercase mb-8"
+            className="font-heading text-sm md:text-base text-[#faf9f6]/80 tracking-widest uppercase mb-8"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, ease: "easeOut", delay: 0.25 }}
