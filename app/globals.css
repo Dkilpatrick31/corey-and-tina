@@ -4,9 +4,15 @@ html {
   scroll-behavior: smooth;
 }
 
-body {
-  font-weight: 300;
-  letter-spacing: 0.03em;
+@layer base {
+  body {
+    font-weight: 300;
+    letter-spacing: 0.03em;
+  }
+
+  p, li, label, input, textarea, select {
+    font-weight: 300;
+  }
 }
 
 .font-script {
