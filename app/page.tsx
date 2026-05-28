@@ -376,7 +376,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto relative z-10">
           <SectionHeading label="The Weekend" title="Wedding Weekend" />
           <div className="flex gap-6 md:gap-12 items-start">
-            <div className="hidden lg:block pt-[82px] flex-shrink-0">
+            <div className="hidden lg:block pt-[100px] flex-shrink-0">
               <FloralVine />
             </div>
             <div className="flex-1 space-y-20">
