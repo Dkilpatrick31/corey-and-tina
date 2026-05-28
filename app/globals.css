@@ -10,9 +10,18 @@ html {
     letter-spacing: 0.03em;
   }
 
-  p, li, label, input, textarea, select {
-    font-weight: 300;
+  p, li, label, input, textarea, select, span, div {
+    font-weight: inherit;
   }
+}
+
+@utility font-body {
+  font-weight: 300;
+  letter-spacing: 0.03em;
+}
+
+@utility font-heading {
+  letter-spacing: inherit;
 }
 
 .font-script {
