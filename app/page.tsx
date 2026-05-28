@@ -16,6 +16,9 @@ type Hotel = {
     breakfast: string | null;
   };
   notes: string;
+  roomBlockLink?: string;
+  roomBlockDeadline?: string;
+  noRoomBlock?: boolean;
 };
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
@@ -23,26 +26,16 @@ const HOTELS: Hotel[] = [
   {
     name: "Hotel Peter and Paul",
     url: "https://hotelpeterandpaul.com",
-    image: "/images/hotel-peter-and-paul-church-facade.jpeg",
+    image: "/images/hotel-peter-and-paul-new.jpeg",
     amenities: {
       distance: "On-site — this is our venue!",
       restaurant: "Yes — The Elysian Bar",
       pool: false,
       breakfast: null,
     },
-    notes: "Room block coming soon. A beautifully restored historic church and schoolhouse turned boutique hotel, located in the Marigny.",
-  },
-  {
-    name: "Hotel Provincial",
-    url: "https://hotelprovincial.com",
-    image: "/images/french-quarter-colonial-hotel-flags.jpeg",
-    amenities: {
-      distance: "~0.5 miles / 10 min walk to venue",
-      restaurant: "Yes — Broussard's Restaurant & Courtyard",
-      pool: true,
-      breakfast: null,
-    },
-    notes: "Classic French Quarter hotel with charming courtyards. Steps from Bourbon Street.",
+    notes: "A beautifully restored historic church and schoolhouse turned boutique hotel, located in the Marigny.",
+    roomBlockLink: "https://reservations.travelclick.com/114648?groupID=5300450",
+    roomBlockDeadline: "Must book by March 1, 2027",
   },
   {
     name: "Hampton Inn French Quarter Market Area",
@@ -55,6 +48,35 @@ const HOTELS: Hotel[] = [
       breakfast: "Yes — complimentary",
     },
     notes: "Clean, comfortable, and reliable. Great value option with complimentary breakfast included.",
+    roomBlockLink: "https://nam02.safelinks.protection.outlook.com/?url=https%3A%2F%2Flinks.h6.hilton.com%2Ff%2Fa%2FsPY6S1lqNKiOQRfjhyzb6g~~%2FAAQRxRA~%2F5H-3kS7e6Ldq8cKTeeIsM4HKxbQLv74dCJLPNUmjhkPmjuUuZQTc0Lw22SfG_ytJr2sSnDn-yHbgEOPWgvYnZ3TbiCsvVYPfH-iiTjqOqJZuggQK3WfPPFz3R86KvBbrOrKOl1y4-R0l-FeIOLXoyCibQ7foYus5Kp91Jy8zqPrGXJPsfDzgkhKN7pl4qKUf&data=05%7C02%7CSenia.Sierra%40Hilton.com%7C92544e4e751642e899b008debc4c3aee%7C660292d2cfd54a3db7a7e8f7ee458a0a%7C0%7C0%7C639155232841182149%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&sdata=6zmBkH5sWCDzVjjWyRjs0Cqkkq%2Bf14mTigI3DOilxHg%3D&reserved=0",
+    roomBlockDeadline: "Must book by March 1, 2027",
+  },
+  {
+    name: "Holiday Inn French Quarter — Chateau LeMoyne",
+    url: "#",
+    image: "/images/holiday-inn-chateau-lemoyne.jpeg",
+    amenities: {
+      distance: "~1.7 miles / 8–10 min drive to venue",
+      restaurant: "Yes — on-site restaurant & bar",
+      pool: true,
+      breakfast: "Complimentary breakfast included",
+    },
+    notes: "Classic French Quarter hotel with a peaceful courtyard atmosphere, tucked just off Bourbon Street while still close to all the action.",
+    roomBlockLink: "https://maps.app.goo.gl/PC88PNgzo2y9FgvU9?g_st=ic",
+    roomBlockDeadline: "Must book by March 1, 2027",
+  },
+  {
+    name: "Hotel Provincial",
+    url: "https://hotelprovincial.com",
+    image: "/images/french-quarter-colonial-hotel-flags.jpeg",
+    amenities: {
+      distance: "~0.5 miles / 10 min walk to venue",
+      restaurant: "Yes — Broussard's Restaurant & Courtyard",
+      pool: true,
+      breakfast: null,
+    },
+    notes: "Classic French Quarter hotel with charming courtyards. Steps from Bourbon Street.",
+    noRoomBlock: true,
   },
 ];
 
@@ -90,6 +112,7 @@ const THINGS = [
       { name: "Bacchanal Wine", description: "Backyard wine bar with live music, very romantic." },
       { name: "The Carousel Bar & Lounge", description: "A literal spinning bar inside Hotel Monteleone." },
       { name: "Pat O'Brien's", description: "Famous for hurricanes and a lively courtyard." },
+      { name: "Fritzels European Jazz Pub", description: "Cozy, old-world jazz bar with classic New Orleans charm and live traditional jazz nightly." },
     ],
   },
   {
@@ -415,15 +438,21 @@ export default function Home() {
               </p>
             </motion.div>
             <motion.div
-              className="border border-[#C9A84C]/40 rounded min-h-64 flex items-center justify-center"
+              className="max-w-3xl mx-auto w-full"
               initial={{ opacity: 0, x: 32 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={vp}
               transition={{ duration: 0.9, ease: "easeOut", delay: 0.15 }}
             >
-              <p className="font-heading italic text-[#faf9f6]/40 text-center px-8 text-sm tracking-wide">
-                Style Guide Image — Coming Soon
-              </p>
+              <div className="relative w-full overflow-hidden rounded-lg shadow-[0_12px_40px_rgba(0,0,0,0.45)]">
+                <Image
+                  src="/images/wedding-style-guide.png"
+                  alt="Wedding style guide"
+                  width={900}
+                  height={1200}
+                  className="w-full h-auto"
+                />
+              </div>
             </motion.div>
           </div>
         </div>
@@ -443,7 +472,7 @@ export default function Home() {
             about a 20–25 minute drive into the city.
           </motion.p>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {HOTELS.map((hotel, i) => (
               <motion.div
                 key={hotel.name}
@@ -485,14 +514,38 @@ export default function Home() {
                     <p className="font-body italic text-sm text-[#faf9f6]/50">{hotel.notes}</p>
                   </li>
                 </ul>
-                <a
-                  href={hotel.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="self-start text-[10px] uppercase tracking-widest border border-[#faf9f6]/30 text-[#faf9f6]/60 px-5 py-2.5 hover:border-[#faf9f6]/60 hover:text-[#faf9f6] transition-colors duration-300"
-                >
-                  Visit Website
-                </a>
+                <div className="flex flex-col gap-3 mt-auto">
+                  <a
+                    href={hotel.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="self-start text-[10px] uppercase tracking-widest border border-[#faf9f6]/30 text-[#faf9f6]/60 px-5 py-2.5 hover:border-[#faf9f6]/60 hover:text-[#faf9f6] transition-colors duration-300"
+                  >
+                    Visit Website
+                  </a>
+                  {hotel.roomBlockLink && (
+                    <div className="flex flex-col gap-1.5">
+                      <a
+                        href={hotel.roomBlockLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="self-start text-[10px] uppercase tracking-widest border border-gold text-gold px-5 py-2.5 hover:bg-gold hover:text-charcoal transition-colors duration-300"
+                      >
+                        Book Your Room Block
+                      </a>
+                      {hotel.roomBlockDeadline && (
+                        <p className="font-body italic text-xs text-[#faf9f6]/40">
+                          {hotel.roomBlockDeadline}
+                        </p>
+                      )}
+                    </div>
+                  )}
+                  {hotel.noRoomBlock && (
+                    <p className="font-body italic text-xs text-[#faf9f6]/40">
+                      No room block at this time
+                    </p>
+                  )}
+                </div>
               </motion.div>
             ))}
           </div>
@@ -646,6 +699,19 @@ export default function Home() {
               <p className="font-body italic text-sm text-[#faf9f6]/35">
                 Please only include guests listed on your invitation
               </p>
+            </div>
+
+            {/* Guest names */}
+            <div className="space-y-1.5">
+              <p className="font-heading text-xs uppercase tracking-[0.35em] text-[#faf9f6]/45">
+                Names of Guests Attending
+              </p>
+              <textarea
+                name="guestNames"
+                placeholder="Please list the full names of all guests in your party"
+                rows={3}
+                className={`${inputCls} resize-none`}
+              />
             </div>
 
             {/* Dietary */}

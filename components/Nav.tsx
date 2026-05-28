@@ -45,7 +45,7 @@ export default function Nav() {
           }`}
           onClick={() => setOpen(false)}
         >
-          C &amp; T
+          C &amp; C
         </Link>
 
         {/* Desktop nav */}
