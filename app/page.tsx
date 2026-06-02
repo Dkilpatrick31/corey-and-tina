@@ -39,7 +39,7 @@ const HOTELS: Hotel[] = [
   },
   {
     name: "Hampton Inn French Quarter Market Area",
-    url: "https://www.hilton.com/en/hotels/msyhxhx-hampton-new-orleans-french-quarter-market-area/",
+    url: "https://www.hilton.com/en/hotels/msyfehx-hampton-new-orleans-french-quarter-market-area/?SEO_id=GMB-AMER-HX-MSYFEHX&y_source=1_MzUwMzQ3NDItNzE1LWxvY2F0aW9uLndlYnNpdGU%3D",
     image: "/images/hampton-inn-new-orleans.jpeg",
     amenities: {
       distance: "~1.2 miles / 5 min drive to venue",
@@ -53,7 +53,7 @@ const HOTELS: Hotel[] = [
   },
   {
     name: "Holiday Inn French Quarter — Chateau LeMoyne",
-    url: "#",
+    url: "https://www.ihg.com/holidayinn/hotels/us/en/new-orleans/msycl/hoteldetail?cm_mmc=GoogleMaps-_-HI-_-US-_-MSYCL",
     image: "/images/holiday-inn-chateau-lemoyne.jpeg",
     amenities: {
       distance: "~1.7 miles / 8–10 min drive to venue",
@@ -62,7 +62,7 @@ const HOTELS: Hotel[] = [
       breakfast: "Complimentary breakfast included",
     },
     notes: "Classic French Quarter hotel with a peaceful courtyard atmosphere, tucked just off Bourbon Street while still close to all the action.",
-    roomBlockLink: "https://maps.app.goo.gl/PC88PNgzo2y9FgvU9?g_st=ic",
+    roomBlockLink: "https://www.ihg.com/holidayinn/hotels/us/en/find-hotels/select-roomrate?fromRedirect=true&qSrt=sBR&qIta=99801505&icdv=99801505&qSlH=MSYCL&qCiD=01&qCiMy=032027&qCoD=04&qCoMy=032027&qGrpCd=PW7&setPMCookies=true&qSHBrC=HI&qDest=301%20%20Dauphine%20Street,%20New%20Orleans,%20LA,%20US&showApp=true&adjustMonth=false&srb_u=1&qRmFltr=",
     roomBlockDeadline: "Must book by March 1, 2027",
   },
   {
@@ -521,7 +521,7 @@ export default function Home() {
                     rel="noopener noreferrer"
                     className="self-start text-[10px] uppercase tracking-widest border border-[#faf9f6]/30 text-[#faf9f6]/60 px-5 py-2.5 hover:border-[#faf9f6]/60 hover:text-[#faf9f6] transition-colors duration-300"
                   >
-                    Visit Website
+                    Visit Hotel
                   </a>
                   {hotel.roomBlockLink && (
                     <div className="flex flex-col gap-1.5">
