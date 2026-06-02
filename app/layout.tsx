@@ -22,11 +22,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Christina & Corey | April 3, 2027",
     description: "Join us as we celebrate our wedding in New Orleans, Louisiana at Hotel Peter and Paul.",
-    url: "https://christina-and-corey.vercel.app",
+    url: "https://coreyandtina.com",
     siteName: "Christina & Corey Wedding",
     images: [
       {
-        url: "https://christina-and-corey.vercel.app/images/Christana-and-Corey-Thumbnail.jpeg",
+        url: "https://coreyandtina.com/images/Christana-and-Corey-Thumbnail.jpeg",
         width: 1200,
         height: 1200,
         alt: "Christina and Corey",
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Christina & Corey | April 3, 2027",
     description: "Join us as we celebrate our wedding in New Orleans, Louisiana at Hotel Peter and Paul.",
-    images: ["https://christina-and-corey.vercel.app/images/Christana-and-Corey-Thumbnail.jpeg"],
+    images: ["https://coreyandtina.com/images/Christana-and-Corey-Thumbnail.jpeg"],
   },
 };
 
