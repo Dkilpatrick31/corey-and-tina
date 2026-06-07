@@ -314,7 +314,7 @@ export default function Home() {
             transition={{ duration: 0.9, ease: "easeOut", delay: 0.25 }}
           >
             April 3, 2027&nbsp;&nbsp;&middot;&nbsp;&nbsp;Hotel Peter and
-            Paul&nbsp;&nbsp;&middot;&nbsp;&nbsp;New Orleans, Louisiana
+            Paul&nbsp;&nbsp;&middot;&nbsp;&nbsp;New&nbsp;Orleans, Louisiana
           </motion.p>
           <motion.p
             className="font-body text-lg md:text-xl text-[#faf9f6]/80 leading-relaxed max-w-2xl mx-auto"
@@ -786,7 +786,7 @@ export default function Home() {
           Christina &amp; Corey
         </p>
         <p className="font-heading text-xs tracking-[0.35em] uppercase text-[#faf9f6]/40">
-          April 3, 2027 &nbsp;&middot;&nbsp; New Orleans, Louisiana
+          April 3, 2027 &nbsp;&middot;&nbsp; New&nbsp;Orleans, Louisiana
         </p>
       </footer>
     </>
