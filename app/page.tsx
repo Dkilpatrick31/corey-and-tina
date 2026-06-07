@@ -313,8 +313,9 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, ease: "easeOut", delay: 0.25 }}
           >
-            April 3, 2027&nbsp;&nbsp;&middot;&nbsp;&nbsp;Hotel Peter and
-            Paul&nbsp;&nbsp;&middot;&nbsp;&nbsp;New&nbsp;Orleans, Louisiana
+            April 3, 2027&nbsp;&nbsp;&middot;&nbsp;&nbsp;Hotel Peter and Paul
+            <br />
+            New&nbsp;Orleans, Louisiana
           </motion.p>
           <motion.p
             className="font-body text-lg md:text-xl text-[#faf9f6]/80 leading-relaxed max-w-2xl mx-auto"
